@@ -15,7 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfig {
-	
+
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		return http.authorizeHttpRequests(auth -> {
@@ -24,25 +24,19 @@ public class SpringSecurityConfig {
 			auth.anyRequest().authenticated();
 		}).formLogin(Customizer.withDefaults()).build();
 	}
-	
+
 	@Bean
 	public UserDetailsService users() {
-		UserDetails user = User.builder()
-				.username("user")
-				.password(passwordEncoder().encode("user"))
-				.roles("USER").build();
-		UserDetails admin = User.builder()
-				.username("admin")
-				.password(passwordEncoder().encode("admin"))
+		UserDetails user = User.builder().username("user").password(passwordEncoder().encode("user")).roles("USER")
+				.build();
+		UserDetails admin = User.builder().username("admin").password(passwordEncoder().encode("admin"))
 				.roles("USER", "ADMIN").build();
 		return new InMemoryUserDetailsManager(user, admin);
 	}
-	
+
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
 
 }
-
