@@ -1,4 +1,4 @@
-package oc.projet3.demo;
+package oc.projet3.chatop;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
