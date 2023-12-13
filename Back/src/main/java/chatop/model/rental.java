@@ -2,8 +2,20 @@ package chatop.model;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name = "rental")
 public class rental {
 	
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	  private Integer id;
 	  private String name;
 	  private Double price;
@@ -14,31 +26,4 @@ public class rental {
 	  private LocalDateTime created_at;
 	  private LocalDateTime updated_at;
 	  
-	public Integer getId() {
-		return id;
-	}
-	public String getName() {
-		return name;
-	}
-	public Double getPrice() {
-		return price;
-	}
-	public Double getSurface() {
-		return surface;
-	}
-	public String getPicture() {
-		return picture;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public Integer getOwner_id() {
-		return owner_id;
-	}
-	public LocalDateTime getCreated_at() {
-		return created_at;
-	}
-	public LocalDateTime getUpdated_at() {
-		return updated_at;
-	}
 }
