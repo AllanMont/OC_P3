@@ -1,4 +1,4 @@
-package controller;
+package chatop.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,22 +11,22 @@ import org.springframework.web.bind.annotation.RestController;
 public class RentalController {
 
 	@GetMapping	
-	public getAllRentals() {
+	public void getAllRentals() {
 		
 	}
 	
 	@GetMapping("/{id}")
-	public getOneRentalById(id Integer) {
+	public void getOneRentalById(Integer id) {
 		
 	}
 	
 	@PostMapping
-	public newRental() {
+	public void newRental() {
 		
 	}
 	
 	@PutMapping("/{id}")
-	public updateRentalById(id Integer) {
+	public void updateRentalById(Integer id) {
 		
 	}
 }

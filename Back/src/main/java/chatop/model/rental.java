@@ -1,4 +1,4 @@
-package model;
+package chatop.model;
 
 import java.time.LocalDateTime;
 
