@@ -7,5 +7,5 @@ import chatop.model.user;
 
 @Repository
 public interface UserRepository extends JpaRepository<user, Long> {
-
+	boolean existsByEmail(String email);
 }

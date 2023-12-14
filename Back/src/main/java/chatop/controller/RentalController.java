@@ -1,7 +1,6 @@
 package chatop.controller;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +28,11 @@ public class RentalController {
       this.rentalService = rentalService;
   	}
   
-	@GetMapping	
-	public ResponseEntity<Map<String, List<rental>>> getAllRentals() {
+	@GetMapping
+	public ResponseEntity<List<rental>> getAllRentals() {
 	    return ResponseEntity.ok(rentalService.getAllRentals());
 	}
+
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<rental> getOneRentalById(@PathVariable Long id) {
