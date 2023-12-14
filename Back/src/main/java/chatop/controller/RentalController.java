@@ -2,10 +2,12 @@ package chatop.controller;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,9 +33,17 @@ public class RentalController {
 	}
 	
 	@GetMapping("/{id}")
-	public void getOneRentalById(Integer id) {
-		
+	public ResponseEntity<rental> getOneRentalById(@PathVariable Long id) {
+	    Optional<rental> optionalRental = rentalService.getOneRentalById(id);
+
+	    if (optionalRental.isPresent()) {
+	        rental foundRental = optionalRental.get();
+	        return ResponseEntity.ok(foundRental);
+	    } else {
+	        return ResponseEntity.notFound().build();
+	    }
 	}
+
 	
 	@PostMapping
 	public void newRental() {
