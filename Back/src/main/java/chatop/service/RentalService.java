@@ -27,7 +27,7 @@ public class RentalService {
       return rentalRepository.findById(id);
   }
 
-  public rental newRental(rental Rental) {
+  public rental createRental(rental Rental) {
       rental savedRental = rentalRepository.save(Rental);
       return savedRental;
   }
