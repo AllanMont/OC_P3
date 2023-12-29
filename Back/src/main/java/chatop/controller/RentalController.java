@@ -3,7 +3,6 @@ package chatop.controller;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import chatop.model.rental;
+import chatop.model.Rental;
 import chatop.service.RentalService;
 
 @RestController
@@ -23,45 +22,36 @@ public class RentalController {
 
   private final RentalService rentalService;
 	  
-  	@Autowired
   	public RentalController(RentalService rentalService) {
       this.rentalService = rentalService;
   	}
   
 	@GetMapping
-	public ResponseEntity<List<rental>> getAllRentals() {
+	public ResponseEntity<List<Rental>> getAllRentals() {
 	    return ResponseEntity.ok(rentalService.getAllRentals());
 	}
 
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<rental> getOneRentalById(@PathVariable Long id) {
-	    Optional<rental> optionalRental = rentalService.getOneRentalById(id);
+	public ResponseEntity<Rental> getOneRentalById(@PathVariable Integer id) {
+	    Optional<Rental> optionalRental = rentalService.getOneRentalById(id);
 
 	    if (optionalRental.isPresent()) {
-	        rental foundRental = optionalRental.get();
+	        Rental foundRental = optionalRental.get();
 	        return ResponseEntity.ok(foundRental);
-	    } else {
-	        return ResponseEntity.notFound().build();
 	    }
+		return ResponseEntity.notFound().build();
 	}
 
 	@PostMapping
-	public ResponseEntity<String> newRental(@RequestBody rental newRental) {
-		/*rental newRental = new rental();
-		newRental.setName();
-		newRental.setSurface();
-		newRental.setPrice();
-		newRental.setDescription();
-	    newRental.setPicture();*/
-		
-	    rental createdRental = rentalService.createRental(newRental);
+	public ResponseEntity<String> newRental(@RequestBody Rental newRental) {		
+	    Rental createdRental = rentalService.createRental(newRental);
 
 	    if (createdRental != null) {
 	        return ResponseEntity.ok("Location créée avec succès !");
-	    } else {
-	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Échec de la création de la location.");
 	    }
+	    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Échec de la création de la location.");
+	    
 	}
 	
 	@PutMapping("/{id}")

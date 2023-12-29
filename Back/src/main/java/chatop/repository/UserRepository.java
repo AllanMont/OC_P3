@@ -3,9 +3,9 @@ package chatop.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import chatop.model.user;
+import chatop.model.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<user, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
 	boolean existsByEmail(String email);
 }

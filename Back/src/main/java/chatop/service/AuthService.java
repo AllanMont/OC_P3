@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import chatop.model.user;
+import chatop.model.User;
 import chatop.register.RegisterRequest;
 import chatop.repository.UserRepository;
 
@@ -25,7 +25,7 @@ public class AuthService {
             return false;
         }
 
-        user newUser = new user();
+        User newUser = new User();
         newUser.setEmail(registerRequest.getEmail());
         newUser.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
         

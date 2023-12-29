@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import chatop.model.user;
+import chatop.model.User;
 import chatop.service.UserService;
 
 @RestController
@@ -24,11 +24,11 @@ public class UserController {
   	}
   	
 	@GetMapping("/{id}")
-	public ResponseEntity<user> getInfosUserById(@PathVariable Long id) {
-	    Optional<user> optionalUser = userService.getInfosUserById(id);
+	public ResponseEntity<User> getInfosUserById(@PathVariable Long id) {
+	    Optional<User> optionalUser = userService.getInfosUserById(id);
 
 	    if (optionalUser.isPresent()) {
-	        user foundUser = optionalUser.get();
+	        User foundUser = optionalUser.get();
 	        return ResponseEntity.ok(foundUser);
 	    } else {
 	        return ResponseEntity.notFound().build();

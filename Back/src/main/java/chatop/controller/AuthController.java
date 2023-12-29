@@ -30,19 +30,13 @@ public class AuthController {
 	
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody RegisterRequest registerRequest) {
-    	try {
-    		authService.registerUser(registerRequest);
-    		}
-    		catch(Exception e) {
-    		  System.out.println(e);
-    		}
     	boolean registrationResult = authService.registerUser(registerRequest);
 
         if (registrationResult) {
             return ResponseEntity.ok("Inscription réussie !");
-        } else {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Échec de l'inscription.");
         }
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Échec de l'inscription.");
+        
     }
     
     
