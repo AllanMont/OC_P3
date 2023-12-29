@@ -8,9 +8,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Data
 @Entity
+@Getter
+@Setter
 @Table(name = "message")
 public class Message {
 	
@@ -23,23 +27,5 @@ public class Message {
 	  private String message;
 	  private LocalDateTime created_at;
 	  private LocalDateTime updated_at;
-	  
-	public Integer getId() {
-		return id;
-	}
-	public Integer getRental_id() {
-		return rental_id;
-	}
-	public Integer getUser_id() {
-		return user_id;
-	}
-	public String getMessage() {
-		return message;
-	}
-	public LocalDateTime getCreated_at() {
-		return created_at;
-	}
-	public LocalDateTime getUpdated_at() {
-		return updated_at;
-	}
+
 }
