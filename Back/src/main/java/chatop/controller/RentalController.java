@@ -1,6 +1,7 @@
 package chatop.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
@@ -27,7 +28,7 @@ public class RentalController {
   	}
   
 	@GetMapping
-	public ResponseEntity<List<Rental>> getAllRentals() {
+	public ResponseEntity<Map<String, List<Rental>>> getAllRentals() {
 	    return ResponseEntity.ok(rentalService.getAllRentals());
 	}
 
